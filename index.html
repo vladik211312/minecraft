@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Minecraft — фан-сайт (стиль Minecraft)</title>
+  <meta name="description" content="Один HTML-файл: стильний фан-сайт у стилі Minecraft — HTML/CSS/JS в одному файлі." />
+  <style>
+    /* --- базові налаштування --- */
+    :root{
+      --bg:#9bc9ff; /* sky */
+      --grass:#57a84b;
+      --dirt:#8b5a2b;
+      --block:#d9d9d9;
+      --accent:#ffeb3b;
+      --text:#0b1a1f;
+      --card:#ffffffcc;
+    }
+    html,body{height:100%;margin:0;font-family: 'Press Start 2P', monospace, Arial, system-ui;background:linear-gradient(#9bd1ff 0%, #cce7ff 70%);color:var(--text);-webkit-font-smoothing:antialiased}
+
+    /* pixel-grid background */
+    body::before{
+      content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),linear-gradient(90deg,rgba(0,0,0,0.02) 1px, transparent 1px);background-size:24px 24px,24px 24px;opacity:0.35;mix-blend-mode:multiply}
+
+    .container{max-width:1100px;margin:26px auto;padding:18px}
+
+    /* header — blocky */
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .logo{display:flex;align-items:center;gap:12px}
+    .cube{width:64px;height:64px;background:linear-gradient(#e0e0e0,#bdbdbd);border:4px solid #6b4f2b;box-shadow:6px 6px 0 rgba(0,0,0,0.12);transform:scale(1);image-rendering:pixelated}
+    .site-title{font-size:18px;letter-spacing:1px}
+    nav{display:flex;gap:10px}
+    a.btn{display:inline-block;padding:10px 14px;border-radius:6px;border:3px solid #6b4f2b;background:linear-gradient(#fff,#e8e8e8);text-decoration:none;font-size:11px}
+
+    /* hero */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:18px}
+    .card{background:var(--card);border:3px solid #6b4f2b;border-radius:8px;padding:16px;box-shadow:8px 8px 0 rgba(0,0,0,0.12)}
+    .hero h1{margin:6px 0 6px;font-size:20px}
+    .lead{font-size:12px;color:#333}
+
+    /* grass strip */
+    .grass-strip{height:46px;background:linear-gradient(var(--grass),#2f8b3a);border-top:4px solid #2d6a2d;display:flex;align-items:flex-end;padding:6px 12px;gap:10px}
+    .grass-block{width:36px;height:36px;background:linear-gradient(#65b75b,#3f7f3a);border:2px solid #234b2a;box-shadow:4px 4px 0 rgba(0,0,0,0.12);}
+
+    /* features */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+    .feature{padding:12px;border:3px solid #6b4f2b;border-radius:6px;background:linear-gradient(#fff,#f3f0e6);font-size:12px}
+
+    /* gallery blocks */
+    .gallery{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+    .block-card{width:120px;height:120px;border:4px solid #6b4f2b;border-radius:6px;display:flex;flex-direction:column;justify-content:center;align-items:center;background:linear-gradient(#fff,#ddd);cursor:pointer;transition:transform .14s ease}
+    .block-card:hover{transform:translateY(-6px)}
+    .block-icon{width:72px;height:72px;background:linear-gradient(#ffd54f,#ffb300);border:3px solid #6b4f2b}
+
+    /* server status */
+    .status-row{display:flex;gap:12px;align-items:center}
+    .status-dot{width:12px;height:12px;border-radius:50%;background:#f44336;border:2px solid #6b4f2b}
+
+    /* footer */
+    footer{margin-top:18px;font-size:12px;color:#333}
+
+    /* responsive */
+    @media(max-width:980px){.hero{grid-template-columns:1fr}.features{grid-template-columns:repeat(2,1fr)}.gallery{justify-content:center}}
+    @media(max-width:560px){nav{display:none}.logo .cube{width:48px;height:48px}}
+
+    /* pixel font fallback: small faux pixel effect for headings */
+    h1,h2,h3{font-family:monospace, 'Press Start 2P', Arial;letter-spacing:1px}
+
+    /* small button style */
+    .cta{display:inline-block;padding:8px 12px;border-radius:6px;background:#4caf50;color:#071; text-decoration:none;border:3px solid #3e7a37}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div class="cube" aria-hidden></div>
+        <div>
+          <div class="site-title">MINEFAN • Фан-сайт</div>
+          <div style="font-size:11px;color:#333">Стиль: Minecraft — HTML/CSS/JS</div>
+        </div>
+      </div>
+      <nav>
+        <a class="btn" href="#home">Головна</a>
+        <a class="btn" href="#features">Фічі</a>
+        <a class="btn" href="#download">Завантажити</a>
+        <a class="btn" href="#server">Сервер</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="card">
+          <h1>Ласкаво просимо до MINEFAN</h1>
+          <p class="lead">Фан-сайт у блоковому стилі: ресурси, гайди та лобі-сервер. Все зроблено як односторінковий демо-проєкт.</p>
+
+          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="cta" href="#download">Завантажити</a>
+            <a class="cta" id="joinServer" href="#server">Підключитись</a>
+            <button class="cta" id="dayNightToggle">Ніч/День</button>
+          </div>
+
+          <div class="features" id="features">
+            <div class="feature">
+              <strong>Блоки</strong>
+              <div style="margin-top:6px">Піксельна естетика з CSS-блоками та галереєю.</div>
+            </div>
+            <div class="feature">
+              <strong>Сервер</strong>
+              <div style="margin-top:6px">Статус сервера (демо) та інформація для підключення.</div>
+            </div>
+            <div class="feature">
+              <strong>Спільнота</strong>
+              <div style="margin-top:6px">Посилання на Discord / Форум (заглушки).</div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <h3>Популярні блоки</h3>
+            <div class="gallery" id="gallery">
+              <div class="block-card" data-url="https://example.com/ore"><div class="block-icon"></div><div style="font-size:11px;margin-top:8px">Золото</div></div>
+              <div class="block-card" data-url="https://example.com/stone"><div class="block-icon" style="background:linear-gradient(#bdbdbd,#8d8d8d)"></div><div style="font-size:11px;margin-top:8px">Камінь</div></div>
+              <div class="block-card" data-url="https://example.com/dirt"><div class="block-icon" style="background:linear-gradient(#a97c50,#6e4322)"></div><div style="font-size:11px;margin-top:8px">Грунт</div></div>
+            </div>
+          </div>
+
+        </div>
+
+        <aside>
+          <div class="card">
+            <div class="grass-strip" aria-hidden>
+              <div class="grass-block"></div>
+              <div style="font-size:13px;font-weight:700;color:#f7f7f7">Лобі-сервер</div>
+            </div>
+            <div style="padding:12px">
+              <div class="status-row" style="margin-bottom:10px">
+                <div class="status-dot" id="statusDot"></div>
+                <div>
+                  <div id="statusText" style="font-weight:700">Offline</div>
+                  <div style="font-size:12px;color:#444">Адреса: <span id="serverAddr">play.minefan.example</span></div>
+                </div>
+              </div>
+
+              <div style="margin-top:8px">
+                <button class="btn" id="checkStatus">Перевірити статус</button>
+                <a class="btn" id="connectLink" href="#" target="_blank">Підключитись</a>
+              </div>
+
+              <div style="margin-top:12px;font-size:12px;color:#333">
+                Платформа: <strong>Java / Bedrock</strong><br>
+                Версія: <strong>1.20+</strong>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="download" style="margin-top:12px">
+        <div class="card">
+          <h2>Завантажити ресурси</h2>
+          <p class="lead">Демо-посилання для скачування текстур та клієнта (приклади).</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+            <a class="btn" href="https://example.com/texturepack.zip" target="_blank">Текстур-пак (ZIP)</a>
+            <a class="btn" href="https://example.com/client" target="_blank">Клієнт (demo)</a>
+            <a class="btn" href="https://example.com/mods" target="_blank">Моди (demo)</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> MINEFAN — фан-сайт</div>
+      <div style="font-size:11px;color:#444">Цей сайт — демонстрація в стилі Minecraft. Не використовує офіційної айдентики Mojang.</div>
+    </footer>
+  </div>
+
+  <script>
+    // рік в футері
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // режим день/ніч
+    const dayNightToggle = document.getElementById('dayNightToggle');
+    let isNight = false;
+    dayNightToggle.addEventListener('click', ()=>{
+      isNight = !isNight;
+      if(isNight){
+        document.body.style.background = 'linear-gradient(#061021 0%, #12213a 70%)';
+        document.documentElement.style.setProperty('--grass','#2b5a2b');
+        document.querySelectorAll('.card').forEach(c=>c.style.background='linear-gradient(#0a1720,#021018)');
+        document.querySelectorAll('.card').forEach(c=>c.style.color='#e6f6f6');
+      } else {
+        document.body.style.background = 'linear-gradient(#9bd1ff 0%, #cce7ff 70%)';
+        document.documentElement.style.setProperty('--grass','#57a84b');
+        document.querySelectorAll('.card').forEach(c=>c.style.background='var(--card)');
+        document.querySelectorAll('.card').forEach(c=>c.style.color='');
+      }
+    });
+
+    // Галерея: відкривати посилання при кліку
+    document.querySelectorAll('.block-card').forEach(card=>{
+      card.addEventListener('click', ()=>{
+        const url = card.dataset.url || '#';
+        if(url && url!=='#') window.open(url,'_blank');
+      });
+      card.addEventListener('keypress', (e)=>{ if(e.key==='Enter') card.click(); });
+    });
+
+    // Симуляція перевірки статусу сервера
+    const statusDot = document.getElementById('statusDot');
+    const statusText = document.getElementById('statusText');
+    const checkBtn = document.getElementById('checkStatus');
+    const connectLink = document.getElementById('connectLink');
+
+    function setServerStatus(online){
+      if(online){
+        statusDot.style.background = '#4caf50';
+        statusText.textContent = 'Online';
+        connectLink.href = 'minecraft://play.minefan.example';
+      } else {
+        statusDot.style.background = '#f44336';
+        statusText.textContent = 'Offline';
+        connectLink.href = '#';
+      }
+    }
+
+    // початковий стан — випадково
+    setServerStatus(false);
+
+    checkBtn.addEventListener('click', ()=>{
+      checkBtn.textContent = 'Перевірка...';
+      setTimeout(()=>{
+        const rnd = Math.random() > 0.4; // ~60% онлайн
+        setServerStatus(rnd);
+        checkBtn.textContent = 'Перевірити статус';
+      }, 900 + Math.random()*800);
+    });
+
+    // Кнопка приєднання відкриває підключення (демо)
+    document.getElementById('joinServer').addEventListener('click', (e)=>{
+      e.preventDefault();
+      const addr = document.getElementById('serverAddr').textContent;
+      alert('Підключення до сервера: ' + addr + '\n(демо — реального підключення немає)');
+    });
+
+  </script>
+</body>
+</html>
